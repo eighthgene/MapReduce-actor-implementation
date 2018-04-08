@@ -26,10 +26,11 @@ class MapReduce(object):
         # self.func(*self.args)
 
         list_workers = registry.get_all_names()
-        print list_workers
+        print 'Workers registered in server: ' + str(list_workers)
 
         num_workers = len(list_workers)
-        print num_workers
+        print 'Number of workers: ' + str(num_workers)
+
         first_part = (time.time() - start_first_part)
 
         print 'Start file splitter...'
