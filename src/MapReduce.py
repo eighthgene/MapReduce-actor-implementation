@@ -1,75 +1,77 @@
-import time
-from pyactor.context import set_context, create_host, serve_forever, sleep
-
-from FileHandler import FileHandler
+import urllib2
 
 
-class MapReduce(object):
+class Mapper(object):
+    _ask = []
+    _tell = ['start_map']
+    _ref = ['start_map']
 
-    def __init__(self, ip, url_server, input_file_path, output_dir, output_filename):
-        self.ip = ip
-        self.url_server = url_server
-        self.input_file_path = input_file_path
-        self.output_dir = output_dir
+    reducer = None
+    data = None
+
+    def map(self):
+        # results = []
+        # for line in self.data:
+        #     line_words = line.split()
+        #     for word in line_words:
+        #         word = re.sub("[^a-zA-Z]+", "", word)
+        #         if word != '':
+        #             # lowercase words
+        #             results.append((word.lower(), 1))
+        # return results
+        pass
+
+    def start_map(self, url_file_chank, ref_reducer):
+        self.data = urllib2.urlopen(url_file_chank)
+        self.reducer = ref_reducer
+        result_mapper = self.map()
+        self.reducer.obtain_map_results(result_mapper)
+
+
+class Reducer(object):
+    _ask = ['get_status']
+    _tell = ['obtain_map_results', 'set_parameters']
+
+    num_mappers = None
+    num_mappers_finished = 0
+    file_handler = None
+    file_path = None
+    output_filename = None
+
+    result_dict = []
+
+    def obtain_map_results(self, map_results):
+        self.num_mappers_finished += 1
+        self.result_dict.append(map_results)
+        # map(lambda w: self.result_dict[w[0]].append(w[1]), map_results)
+        if self.num_mappers_finished >= self.num_mappers:
+            self.start_reducer()
+
+    def start_reducer(self):
+        reduce_result = self.reduce(self.result_dict)
+        if reduce_result is not None:
+            self.save_to_file(reduce_result)
+        self.file_handler.clear()
+        print 5 * '#' + ' Reducer finished ' + 5 * '#'
+
+    def set_parameters(self, num_maps, file_handler, file_path, output_filename):
+        self.num_mappers = num_maps
+        self.file_handler = file_handler
+        self.file_path = file_path
         self.output_filename = output_filename
 
-    def run(self):
-        url_file = 'http://' + self.url_server + '/'
-        ip = self.ip
+    def save_to_file(self, result):
+        # d_view = [(v, k) for k, v in result.iteritems()]
+        # d_view.sort(reverse=True)  # natively sort by first element
+        # with open(self.file_path + self.output_filename, 'w') as f:
+        #     print >> f, 'Filename:', [["%s: %d" % (k, v)] for v, k in d_view]
 
-        start_first_part = time.time()
-        set_context()
-        host = create_host('http://' + ip + ':6002')
+        with open(self.file_path + self.output_filename, 'w') as f:
+            print >> f, 'Filename:', sorted(result.items(), key=lambda x: x[1], reverse=True)
 
-        registry = host.lookup_url('http://' + str(ip) + ':6000/regis', 'Registry',
-                                   'Registry')
-        # self.func(*self.args)
-
-        list_workers = registry.get_all_names()
-        print 'Workers registered in server: ' + str(list_workers)
-
-        num_workers = len(list_workers)
-        print 'Number of workers: ' + str(num_workers)
-
-        first_part = (time.time() - start_first_part)
-
-        print 'Start file splitter...'
-        file_handler = FileHandler(self.input_file_path, self.output_dir)
-        file_handler.split_file(num_workers)
-        print 'Finish splitting...'
-
-        start_second_part = time.time()
-        # Create reducer
-        if not host.has_actor('reducer'):
-            reducer = host.spawn('reducer', 'Implementation/Reducer')
-        else:
-            reducer = host.lookup('reducer')
-        reducer.set_parameters(num_workers, file_handler, self.output_dir, self.output_filename)
-
-        # Create mapper actors
-        for i in range(num_workers):
-            remote_host = registry.lookup(list_workers[i])
-            # print remote_host
-            if remote_host is not None:
-                if not remote_host.has_actor('mapper'):
-                    worker = remote_host.spawn('mapper', 'Implementation/Mapper')
-                else:
-                    worker = remote_host.lookup('mapper')
-                print "Mapper created in host -> " + list_workers[i]
-
-                url_file_chank = url_file + "file_" + str(i) + '.txt'
-                worker.start_map(url_file_chank, reducer)
-
-        # TODO
-        # Temp loop to measure time
-        while reducer.get_status() != True:
-            pass
-
-        print "Execution time:  %s seconds ---" % (first_part + (time.time() - start_second_part))
-
-        # Unbind Workers
-        # print "Start unbinding Workers."
-        # for i in range(num_workers):
-        #     registry.unbind(list_workers[i])
-
-        serve_forever()
+    def reduce(self, data):
+        results = {}
+        # for res in data.items():
+        #     results[res[0]] = sum(res[1])
+        # return results
+        return results

@@ -40,13 +40,14 @@ class Registry(object):
 
 
 if __name__ == "__main__":
-    ip = "192.168.0.155"
+    ip = sys.argv[1]
     port = 6000
-    if len(sys.argv) == 1:
+    if len(sys.argv) == 2:
         pass
 
-    elif len(sys.argv) == 2:
-        port = (sys.argv[1])
+    elif len(sys.argv) == 3:
+        ip = sys.argv[1]
+        port = (sys.argv[2])
         try:
             if (int(port) > 65535) or (int(port) < 0):
                 print("Error, port must be 0-65535")
