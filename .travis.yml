@@ -7,4 +7,3 @@ install:
   - pip install pyactor
 
 script:
-  - python Exemple.py
