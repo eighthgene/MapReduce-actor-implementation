@@ -7,4 +7,4 @@ install:
   - pip install pyactor
 
 script:
-  - pythom Exemple.py
+  - python Exemple.py
