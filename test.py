@@ -65,6 +65,7 @@ class BasicTest(unittest.TestCase):
         self.timer.start_timer()
         sleep(1)
         self.timer.stop_timer()
+        sleep(1)
         self.assertEqual(self.timer.final_time - self.timer.initial_time, 1)
 
 
