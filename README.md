@@ -14,10 +14,10 @@ The modules of implementation:
 - **Master.py**: The main program in which one method for starting **run()**
 - **Registry.py**: Service of system workers names. Used for lookup bind, unbind, lookup actors in system.
 - **MapReduce.py**: Consists of two classes of **actors: Master and Reducer**.
-- **Worker.py**:
-- **FileHandler.py**:
-Auxiliary:
-- **Timer.py**:
+- **Worker.py**: Client class to connect to the system.
+- **FileHandler.py**: Сlass for splitting the input file.
+- Auxiliary:
+- **Timer.py**: Actor class used to measure the running time
 
 
 
