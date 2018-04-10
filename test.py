@@ -42,6 +42,17 @@ class BasicTest(unittest.TestCase):
         self.out.clear()
         sys.stdout = self.stdo
 
+    def test_unbind(self):
+        """
+        Test the bind and unbind in the registry.
+        :return:
+        """
+        self.registry.unbind('Reducer')
+        self.registry.unbind('Mapper')
+        self.assertRaises(KeyError, self.registry.lookup, 'Reducer')
+        self.assertEqual(self.registry.lookup('Mapper'), None)
+        self.assertListEqual(self.registry.get_all(), [])
+
 
 if __name__ == '__main__':
     print ('## Run the tests.')
