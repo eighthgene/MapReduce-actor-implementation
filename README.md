@@ -50,19 +50,68 @@ tutorial.
 
 ## How to run
 To run the system, follow these steps:
-1- Start the Registry
+**Step 1:** Start the Registry
     
     python Registry.py [IP] [PORT]
 or
 
-    ```
     python Registry.py [IP]
-    ```
  
 _NOTE!_ Default port will bee **:6000**
 
+**Step 2:** Connect one or more clients (workers) to Registry.
 
-   
+    python Worker.py [IP_WORKER:PORT] [IP_REGISTRY:PORT] [USERNAME]
+
+_NOTE!_ If you run all the workers on the same machine, you need to specify different ports for each of them.
+
+Exemple:
+_2 clients in same computer_
+
+    python Worker.py 192.168.0.22:7001 192.168.0.22:6000 user1
+    python Worker.py 192.168.0.22:7002 192.168.0.22:6000 user2
+
+**Step 3:** Start HTTP server in the folder where the input file is located.
+
+    python -m SimpleHTTPServer
+    
+**Step 4:** Create in you program:
+- create your own class that is inherited from **Master**
+- create class that is inherited from **Mapper** and override function **map()**
+    
+    ```
+    IMPORTANT! 
+    This function recive data as parametr. 
+    ```
+Example WordCount function map()
+
+    ```python
+    class MapImpl(Mapper):
+    
+    def map(self, data):
+        results = {}
+        for line in data:
+            line_words = line.split()
+            for word in line_words:
+                word = re.sub("[^a-zA-Z]+", "", word)
+                if word != '':
+                    word = word.lower()
+                    if word in results:
+                        results[word] += 1
+                    else:
+                        results[word] = 1
+        return results
+    ```
+    
+    
+
+
+
+
+
+- create class that is inherited from **Reducer** and override function **redue()**
+    
+    
 
 ## Authors
 
