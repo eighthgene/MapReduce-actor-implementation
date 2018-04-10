@@ -33,8 +33,10 @@ class BasicTest(unittest.TestCase):
         self.timer = self.h.spawn('Timer', Timer)
         self.registry.bind('Reducer', self.reducer)
         self.registry.bind('Mapper', self.mapper)
+        self.registry.bind('Timer', self.timer)
         self.url_server = '127.0.0.1'
         self.url_file = 'http://' + self.url_server + '/pg2000.txt'
+
         self.stdo = sys.stdout
         self.out = Outs()
         sys.stdout = self.out
