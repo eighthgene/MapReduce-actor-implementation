@@ -7,7 +7,7 @@ import sys
 
 from pyactor.context import set_context, create_host, sleep, shutdown
 
-import MapReduce
+from MapReduce import Mapper, Reducer
 from Registry import Registry
 
 
@@ -27,12 +27,12 @@ class BasicTest(unittest.TestCase):
         set_context()
         self.h = create_host()
         self.registry = self.h.spawn('Registry', Registry)
-        self.mapper = self.h.spawn('Mapper', MapReduce)
+        self.mapper = self.h.spawn('Mapper', Mapper)
 
-        self.reducer = self.h.spawn('Reducer', MapReduce)
+        self.reducer = self.h.spawn('Reducer', Reducer)
 
         self.registry.bind('Reducer', self.reducer)
-        self.registry.bind('mapper', self.mapper)
+        self.registry.bind('Mapper', self.mapper)
         self.stdo = sys.stdout
         self.out = Outs()
         sys.stdout = self.out
