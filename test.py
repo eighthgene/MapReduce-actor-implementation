@@ -34,7 +34,6 @@ class BasicTest(unittest.TestCase):
         self.stdo = sys.stdout
         self.out = Outs()
         sys.stdout = self.out
-        self.assertEquals("Reducer <- registered in server \nMapper <- registered in server", self.out.lines)
 
     def tearDown(self):
         # This is executed after each test. Doesn't matter if the test failed
