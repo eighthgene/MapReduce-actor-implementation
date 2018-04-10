@@ -60,6 +60,13 @@ class BasicTest(unittest.TestCase):
         self.assertEqual(self.registry.lookup('mapper'), None)
         self.assertListEqual(self.registry.get_all(), [])
 
+    def test_timer(self):
+        self.out.clear()
+        self.timer.initial_time()
+        sleep(1)
+        self.timer.final_time()
+        self.assertEqual(self.timer.final_time, 'Execution time:  1.000s seconds ---"')
+
 
 if __name__ == '__main__':
     print ('## Run the tests.')
