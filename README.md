@@ -102,6 +102,11 @@ class MapImpl(Mapper):
         return results
 ```
 
+    ```
+    IMPORTANT! 
+    map() have to return dictionary.
+    ```
+
 - create class that is inherited from **Reducer** and override function **redue()**
 Example WordCount function Reduce() and class inherited from Reducer:
 
@@ -116,6 +121,7 @@ class ReduceImpl(Reducer):
             reduced_dict = dict(Counter(tmp_dict) + Counter(reduced_dict))
         return reduced_dict
 ```
+
 
 **Step 5:** Create instance of your class and pass parameters:
     
