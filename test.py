@@ -34,6 +34,7 @@ class BasicTest(unittest.TestCase):
         self.stdo = sys.stdout
         self.out = Outs()
         sys.stdout = self.out
+        self.assertEquals("Reducer <- registered in server \nMapper <- registered in server", self.out.lines)
 
     def tearDown(self):
         # This is executed after each test. Doesn't matter if the test failed
@@ -41,12 +42,6 @@ class BasicTest(unittest.TestCase):
         shutdown()
         self.out.clear()
         sys.stdout = self.stdo
-
-    def test_MyTest(self):
-        # This is the test. You can put as much of them as you want. The name
-        # must begin with 'test'.
-        sleep(.5)
-        self.assertEquals("Reducer <- registered in server \nMapper <- registered in server", self.out.lines)
 
 
 if __name__ == '__main__':
