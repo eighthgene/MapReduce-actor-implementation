@@ -17,4 +17,5 @@ class Timer(object):
             pass
 
     def stop_timer(self):
-        print "Execution time:  %s seconds ---" % (time.time() - self.initial_time)
+        self.final_time = time.time()
+        print "Execution time:  %s seconds ---" % (self.final_time - self.initial_time)
