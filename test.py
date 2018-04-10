@@ -27,10 +27,8 @@ class BasicTest(unittest.TestCase):
         set_context()
         self.h = create_host()
         self.registry = self.h.spawn('Registry', Registry)
-        self.mapper = self.h.spawn('Mapper', Mapper)
-
         self.reducer = self.h.spawn('Reducer', Reducer)
-
+        self.mapper = self.h.spawn('Mapper', Mapper)
         self.registry.bind('Reducer', self.reducer)
         self.registry.bind('Mapper', self.mapper)
         self.stdo = sys.stdout
@@ -44,11 +42,10 @@ class BasicTest(unittest.TestCase):
         self.out.clear()
         sys.stdout = self.stdo
 
-
-    def test_mytest(self):
+    def test_MyTest(self):
         # This is the test. You can put as much of them as you want. The name
         # must begin with 'test'.
-        self.mapper.map()
+        self.mapper.start_map()
         sleep(.5)
         self.assertEquals("Bot : ...\n", self.out.lines)
 
