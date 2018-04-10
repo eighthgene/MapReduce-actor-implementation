@@ -48,6 +48,20 @@ If you clone the repository, you will also have access to the tests and a folder
 full of examples. Just check the github page and the documentation for a detailed
 tutorial.
 
+## How to run
+To run the system, follow these steps:
+1- Start the Registry
+    
+    python Registry.py [IP] [PORT]
+or
+    ```
+    python Registry.py [IP]
+    ```
+_NOTE!_ Default port will bee **:6000**
+
+
+   
+
 ## Authors
 
 * **Oleg Sokolov** -    [eighthgene](https://github.com/eighthgene)
