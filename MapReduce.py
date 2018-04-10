@@ -11,7 +11,7 @@ class Mapper(object):
     actor = None
     timer = None
 
-    def map(self):
+    def map(self, data):
         # results = []
         # for line in self.data:
         #     line_words = line.split()
@@ -28,7 +28,7 @@ class Mapper(object):
         self.timer = timer_actor
         self.timer.start_timer()
         self.reducer = ref_reducer
-        result_mapper = self.map()
+        result_mapper = self.map(self.data)
         self.reducer.obtain_map_results(result_mapper)
 
 

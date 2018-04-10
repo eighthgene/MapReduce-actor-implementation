@@ -1,4 +1,3 @@
-import time
 from pyactor.context import set_context, create_host, serve_forever
 from FileHandler import FileHandler
 

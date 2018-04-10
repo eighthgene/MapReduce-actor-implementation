@@ -6,9 +6,9 @@ from MapReduce import Mapper, Reducer
 
 
 class MapImpl(Mapper):
-    def map(self):
+    def map(self, data):
         results = {}
-        for line in self.data:
+        for line in data:
             line_words = line.split()
             for word in line_words:
                 word = re.sub("[^a-zA-Z]+", "", word)
@@ -47,7 +47,7 @@ if __name__ == '__main__':
     mapReduce = WordCount('192.168.0.22',
                           '192.168.0.22:8000',
                           'Z:/1/pg2000.txt', 'Z:/1/', 'res.txt',
-                          'Example/MapImpl', 'Example/ReduceImpl')
+                          'WordCount/MapImpl', 'WordCount/ReduceImpl')
     mapReduce.run()
 
 
