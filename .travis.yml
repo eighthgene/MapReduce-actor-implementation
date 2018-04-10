@@ -7,9 +7,6 @@ install:
   - pip install pyactor
   cd $TRAVIS_BUILD_DIR/InputFile
   - python -m SimpleHTTPServer &
-  cd ..
-  - python Registry.py 127.0.0.2 &
-  - python Worker.py 127.0.0.3:6008 127.0.0.2:6000 travis-env &
-  - python Exemple.py
+  - python Sequential.py /InputFile/pg2000.txt
 
 script:
