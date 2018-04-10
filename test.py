@@ -69,6 +69,11 @@ class BasicTest(unittest.TestCase):
         self.timer.final_time = time.clock() - self.timer.initial_time
         self.assertIsNot(self.timer.final_time, 0)
 
+    def test_mapper(self, url, reducer, timer):
+        self.reducer = reducer
+        self.timer = timer
+        self.url = url
+
 
 if __name__ == '__main__':
     print ('## Run the tests.')
