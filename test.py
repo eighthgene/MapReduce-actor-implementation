@@ -64,9 +64,7 @@ class BasicTest(unittest.TestCase):
         self.out.clear()
         self.timer.start_timer()
         sleep(1)
-        self.timer.stop_timer()
-        sleep(1)
-        self.assertEqual(self.timer.final_time - self.timer.initial_time, 1)
+        self.assertEqual(self.timer.stop_timer(), 'Execution time:  1.0 seconds ---')
 
 
 if __name__ == '__main__':
