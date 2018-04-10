@@ -62,10 +62,10 @@ class BasicTest(unittest.TestCase):
 
     def test_timer(self):
         self.out.clear()
-        self.timer.initial_time()
+        self.timer.start_timer()
         sleep(1)
-        self.timer.final_time()
-        self.assertEqual(self.timer.final_time, 'Execution time:  1.000s seconds ---"')
+        self.timer.stop_timer()
+        self.assertEqual(self.timer.final_time - self.timer.initial_time, 1)
 
 
 if __name__ == '__main__':
