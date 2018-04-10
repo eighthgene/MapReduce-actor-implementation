@@ -3,6 +3,7 @@
 This is a simplified model of distributed computing presented by Google, used for parallel computations over very large data sets in computer clusters. This project is simplified [MapReduce](https://en.wikipedia.org/wiki/MapReduce) using implementation of [PyActor](https://github.com/pedrotgn/pyactor) library.
 
 [![Build Status](https://travis-ci.org/eighthgene/MapReduce-actor-implementation.svg?branch=master)](https://travis-ci.org/eighthgene/MapReduce-actor-implementation)
+[![codecov](https://github.com/eighthgene/MapReduce-actor-implementation/branch/master/graph/badge.svg)](https://codecov.io/gh/eighthgene/MapReduce-actor-implementation)
 
 ## Project architecture
 This is a simplified implementation of MapRedus. Model consists of: N-number of workers nodes, 1 reducer and Master (main). It is a framework for computing some sets of distributed tasks using a large number of computers that form a cluster. 
