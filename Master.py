@@ -69,9 +69,4 @@ class Master(object):
                 url_file_chank = url_file + "file_" + str(i) + '.txt'
                 worker.start_map(url_file_chank, reducer, timer)
 
-        # Unbind Workers
-        # print "Start unbinding Workers."
-        # for i in range(num_workers):
-        #     registry.unbind(list_workers[i])
-
         serve_forever()
