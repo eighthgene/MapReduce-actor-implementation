@@ -74,7 +74,7 @@ class Reducer(object):
         #     print >> f, 'Filename:', [["%s: %d" % (k, v)] for v, k in d_view]
 
         with open(self.file_path + self.output_filename, 'w') as f:
-            print >> f, 'Filename:', sorted(result.items(), key=lambda x: x[1], reverse=True)
+            print >> f, 'Output of MapReduce:', sorted(result.items(), key=lambda x: x[1], reverse=True)
 
     def reduce(self, data):
         results = {}

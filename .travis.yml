@@ -4,8 +4,9 @@ python:
   - 2.7
 
 install:
+  - pip install codecov
   - pip install pyactor
-  - python -m SimpleHTTPServer &
-  - python Sequential.py InputFile/pg2000.txt
 
 script:
+  - python -m SimpleHTTPServer &
+  - python -m coverage run test.py
