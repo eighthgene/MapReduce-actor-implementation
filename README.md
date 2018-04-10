@@ -6,7 +6,8 @@ This is a simplified model of distributed computing presented by Google, used fo
 
 ## Getting Started
 This is a simplified implementation of MapRedus. Model consists of: N-number of workers nodes, 1 reducer and Master (main). It is a framework for computing some sets of distributed tasks using a large number of computers that form a cluster. 
-![untitled diagram 1](https://user-images.githubusercontent.com/18737866/38579052-1801bdec-3d06-11e8-9195-6dd653a4dc23.jpg)
+
+![untitled diagram 3](https://user-images.githubusercontent.com/18737866/38579136-6371968a-3d06-11e8-9f71-3ccd8c2136ae.jpg)
 
 
 
