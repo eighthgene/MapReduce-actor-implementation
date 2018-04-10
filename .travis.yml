@@ -7,5 +7,7 @@ install:
   - pip install pyactor
   - python -m SimpleHTTPServer &
   - python Registry.py 127.0.0.2
+  - python Worker.py 127.0.0.3:6008 127.0.0.2:6000 travis-env
+  - python Exemple.py
 
 script:
