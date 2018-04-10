@@ -45,9 +45,8 @@ class BasicTest(unittest.TestCase):
     def test_MyTest(self):
         # This is the test. You can put as much of them as you want. The name
         # must begin with 'test'.
-        self.mapper.start_map()
         sleep(.5)
-        self.assertEquals("Bot : ...\n", self.out.lines)
+        self.assertEquals("Reducer <- registered in server \nMapper <- registered in server", self.out.lines)
 
 
 if __name__ == '__main__':
