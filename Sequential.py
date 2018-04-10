@@ -33,7 +33,7 @@ class WordCount(object):
     def showInfo(self):
         self.dict = sorted(self.dict.items(), key=lambda x: x[1], reverse=True)
         # d_view = [(v, k) for k, v in self.dict.iteritems()]
-        with open('OutputFile/reducer2.txt', 'w') as f:
+        with open('OutputFile/result_seq.txt', 'w') as f:
             print >> f, 'Filename:', self.dict
 
     def checkWord(self, word):
@@ -48,9 +48,9 @@ def main():
     wc = WordCount()
     # cw = CountingWords()
     try:
-    	f = open(sys.argv[1], 'r')
+        f = open(sys.argv[1], 'r')
     except IOError:
-    	print "Error! File doesn't exist!"
+        print "Error! File doesn't exist!"
     for line in f:
         for word in line.split():
             word = re.sub("[^a-zA-Z]+", "", word)
@@ -65,5 +65,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-

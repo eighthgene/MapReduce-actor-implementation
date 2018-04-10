@@ -6,6 +6,6 @@ python:
 install:
   - pip install pyactor
   - python -m SimpleHTTPServer &
-  - python Sequential.py /InputFile/pg2000.txt
+  - python Sequential.py InputFile/pg2000.txt
 
 script:
