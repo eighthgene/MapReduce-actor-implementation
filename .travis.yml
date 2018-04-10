@@ -6,6 +6,6 @@ python:
 install:
   - pip install pyactor
   - python -m SimpleHTTPServer &
-  - python Registry.php 127.0.0.2
+  - python Registry.py 127.0.0.2
 
 script:
