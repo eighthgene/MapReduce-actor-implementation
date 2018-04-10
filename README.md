@@ -54,9 +54,11 @@ To run the system, follow these steps:
     
     python Registry.py [IP] [PORT]
 or
+
     ```
     python Registry.py [IP]
     ```
+ 
 _NOTE!_ Default port will bee **:6000**
 
 
