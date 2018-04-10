@@ -51,6 +51,13 @@ class BasicTest(unittest.TestCase):
         # must begin with 'test'.
         self.mapper.start_map(self.url_file, self.reducer, self.timer)
 
+    def test_unbind(self):
+        self.registry.unbid('Reducer')
+        self.registry.unbid('Mapper')
+        self.registry.unbid('Timer')
+        self.assertEqual(self.registry.lookup('mapper'), None)
+        self.assertListEqual(self.registry.get_all(), [])
+
 
 if __name__ == '__main__':
     print ('## Run the tests.')
