@@ -47,14 +47,17 @@ def main():
     start_time = time.time()
     wc = WordCount()
     # cw = CountingWords()
-    f = open(sys.argv[1], 'r')
+    try:
+    	f = open(sys.argv[1], 'r')
+    except IOError:
+    	print "Error! File doesn't exist!"
     for line in f:
         for word in line.split():
             word = re.sub("[^a-zA-Z]+", "", word)
             if word != '':
                 # cw.addWord()
                 wc.put(word)
-    print wc.showInfo()
+    wc.showInfo()
     # print "The total number of words in this text file is:", cw.getNumWords()
     # print cw.getNumWords()
     print "Execution time:  %s seconds ---" % (time.time() - start_time)
@@ -63,16 +66,4 @@ def main():
 if __name__ == "__main__":
     main()
 
-'''
-def map(l,op):
-    res = []
-    for i in l:
-        res.append(op(i))
-    return res
 
-def reduce(l,op,acc):
-    if not l:
-        return acc
-    return reduce(l[1:],op,op(l[0],acc))
-
-'''
