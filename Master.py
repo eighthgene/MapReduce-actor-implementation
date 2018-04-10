@@ -55,8 +55,6 @@ class Master(object):
             reducer = host.lookup('reducer')
         reducer.set_parameters(num_workers, file_handler, self.output_dir, self.output_filename, timer)
 
-        #timer.start_timer()
-
         # Create mapper actors
         for i in range(num_workers):
             remote_host = registry.lookup(list_workers[i])
