@@ -57,7 +57,7 @@ or
 
     python Registry.py [IP]
  
-_NOTE!_ Default port will bee **:6000**
+_NOTE!_ Default port will be **:6000**
 
 **Step 2:** Connect one or more clients (workers) to Registry.
 
