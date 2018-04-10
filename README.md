@@ -100,8 +100,7 @@ Example WordCount function map():
                             results[word] += 1
                         else:
                             results[word] = 1
-        return results
-        ```
+        return results```
     
     
 
