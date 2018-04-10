@@ -10,7 +10,7 @@ This is a simplified implementation of MapRedus. Model consists of: N-number of 
 The work of MapReduce consists of two steps: Map and Reduce which we can override to use.
 ![untitled diagram 2](https://user-images.githubusercontent.com/18737866/38579072-27e1c64e-3d06-11e8-8198-5135d03de87a.jpg)
 
-The modules of the implementation are:
+The modules of implementation:
 - **Master.py**: The main program in which one method for starting **run()**
 - **Registry.py**: Service of system workers names. Used for lookup bind, unbind, lookup actors in system.
 - **MapReduce.py**: Consists of two classes of **actors: Master and Reducer**.
