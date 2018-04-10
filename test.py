@@ -55,7 +55,7 @@ class BasicTest(unittest.TestCase):
         self.mapper.start_map(self.url_file, self.reducer, self.timer)
 
     def test_unbind(self):
-        self.assertEqual(self.registry.lookup('timer'), self.timer)
+        self.assertEqual(self.registry.lookup('Timer'), self.timer)
         self.registry.unbind('Reducer')
         self.registry.unbind('Mapper')
         self.registry.unbind('Timer')
