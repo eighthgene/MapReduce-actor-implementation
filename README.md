@@ -85,9 +85,11 @@ _2 clients in same computer_
     ```
 Example WordCount function map():
 
-        ```python
+        
         class MapImpl(Mapper):
-    
+        
+TEst
+        ```python
         def map(self, data):
             results = {}
             for line in data:
@@ -100,7 +102,8 @@ Example WordCount function map():
                             results[word] += 1
                         else:
                             results[word] = 1
-        return results```
+        return results
+        ```
     
     
 
