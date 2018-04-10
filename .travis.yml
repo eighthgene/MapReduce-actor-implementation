@@ -5,7 +5,6 @@ python:
 
 install:
   - pip install pyactor
-  cd $TRAVIS_BUILD_DIR/InputFile
   - python -m SimpleHTTPServer &
   - python Sequential.py /InputFile/pg2000.txt
 
