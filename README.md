@@ -30,7 +30,7 @@ Packages required:
 
     python, python-dev, python-pip
 
-Install with:
+### Installing
 
     sudo pip install pyactor
 
@@ -47,6 +47,11 @@ repository and installing with:
 If you clone the repository, you will also have access to the tests and a folder
 full of examples. Just check the github page and the documentation for a detailed
 tutorial.
+
+## Authors
+
+* **Oleg Sokolov** -    [eighthgene](https://github.com/eighthgene)
+* **Enyu Lin** -        [enyuLin](https://github.com/enyuLin)
 
 
 
