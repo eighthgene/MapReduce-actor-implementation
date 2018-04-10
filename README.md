@@ -83,7 +83,7 @@ _2 clients in same computer_
     IMPORTANT! 
     This function recive argument **data** (lines of input text) as parametr. 
     ```
-Example WordCount function map():
+Example WordCount function map() and class inherited from Mapper:
 
 ```python
 class MapImpl(Mapper):
@@ -101,10 +101,45 @@ class MapImpl(Mapper):
                             results[word] = 1
         return results
 ```
-    
-
 
 - create class that is inherited from **Reducer** and override function **redue()**
+Example WordCount function Reduce() and class inherited from Reducer:
+
+
+```python
+class ReduceImpl(Reducer):
+
+    def reduce(self, list_of_dict):
+        reduced_dict = {}
+        for dictionary in list_of_dict:
+            tmp_dict = dict(dictionary)
+            reduced_dict = dict(Counter(tmp_dict) + Counter(reduced_dict))
+        return reduced_dict
+```
+
+**Step 5:** Create instance of your class and pass parameters:
+    
+    # ip host (Master)
+    # IP HTTP Server
+    # Input file path
+    # Output path
+    # Name output file (.txt)
+    [IP], [IP_HTTP_SERVER:PORT], [FILE_DIR], [OUTPUT_DIR], [FILE_NAME] 
+    
+Example:
+
+```python
+mapReduce = WordCount('192.168.0.22',
+                          '192.168.0.22:8000',
+                          'Z:/Folder/Text.txt', 'Z:/Folder/', 'output.txt',
+                          'WordCount/MapImpl', 'WordCount/ReduceImpl')
+```
+
+**Step 6:** Finally, call function **run()**
+  
+    mapReduce.run()
+
+    
     
     
 
