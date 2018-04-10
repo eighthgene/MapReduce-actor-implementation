@@ -86,8 +86,20 @@ _2 clients in same computer_
 Example WordCount function map():
 
 ```python
-s = "Python syntax highlighting"
-print s
+class MapImpl(Mapper):
+        def map(self, data):
+            results = {}
+            for line in data:
+                line_words = line.split()
+                for word in line_words:
+                    word = re.sub("[^a-zA-Z]+", "", word)
+                    if word != '':
+                        word = word.lower()
+                        if word in results:
+                            results[word] += 1
+                        else:
+                            results[word] = 1
+        return results
 ```
     
 
