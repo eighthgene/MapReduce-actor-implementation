@@ -16,7 +16,8 @@ The modules of implementation:
 - **MapReduce.py**: Consists of two classes of **actors: Master and Reducer**.
 - **Worker.py**: Client class to connect to the system.
 - **FileHandler.py**: Сlass for splitting the input file.
-- Auxiliary:
+
+Auxiliary:
 - **Timer.py**: Actor class used to measure the running time
 
 
