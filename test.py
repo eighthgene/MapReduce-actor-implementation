@@ -50,6 +50,11 @@ class BasicTest(unittest.TestCase):
         self.out.clear()
         sys.stdout = self.stdo
 
+    def test_start_map(self):
+        # This is the test. You can put as much of them as you want. The name
+        # must begin with 'test'.
+        self.mapper.start_map(self.url_file, self.reducer, self.timer)
+
     def test_unbind(self):
         self.assertEqual(self.registry.lookup('Timer'), self.timer)
         self.registry.unbind('Reducer')
@@ -64,6 +69,17 @@ class BasicTest(unittest.TestCase):
         sleep(1)
         self.timer.final_time = time.clock() - self.timer.initial_time
         self.assertIsNot(self.timer.final_time, 0)
+
+    def test_equal_list(self):
+        # with open('./Files/result_distributed.txt', 'r') as dist:
+        #     dict_distr = eval(dist.read())
+
+        dict_distr = eval(open('./Files/result_distributed.txt').read())
+        dict_seq = eval(open('./Files/result_seq.txt').read())
+
+        # with open('./Files/result_distributed.txt', 'r') as seq:
+        #     dict_seq = eval(seq.read())
+        assert dict_distr == dict_seq
 
     def test_map(self):
         data = open('./Files/pg2000.txt', 'r')
