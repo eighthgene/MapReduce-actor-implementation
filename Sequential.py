@@ -17,8 +17,6 @@ class CountingWords(object):
     def getNumWords(self):
         return self.nWords
 
-    def abs(self):
-        pass
 
 class WordCount(object):
 
