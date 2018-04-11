@@ -81,13 +81,13 @@ class BasicTest(unittest.TestCase):
         #     dict_seq = eval(seq.read())
         assert dict_distr == dict_seq
 
-    def test_map(self):
-        data = open('./Files/pg2000.txt', 'r')
-        mapper = MapImpl()
-        result = mapper.map(data)
-        dict_distributed = eval(open('./Files/result_distributed.txt').read())
-        result = sorted(result.items(), key=lambda x: x[1], reverse=True)
-        self.assertEqual(len(result), len(dict_distributed))
+    # def test_map(self):
+    #     data = open('./Files/pg2000.txt', 'r')
+    #     mapper = MapImpl()
+    #     result = mapper.map(data)
+    #     dict_distributed = eval(open('./Files/result_distributed.txt').read())
+    #     result = sorted(result.items(), key=lambda x: x[1], reverse=True)
+    #     self.assertEqual(len(result), len(dict_distributed))
 
 
 if __name__ == '__main__':
