@@ -8,6 +8,10 @@ install:
   - pip install pyactor
   - pip install coverage
 
+ignore:
+  - /Files/*
+  - Master.py
+
 script:
   - python -m SimpleHTTPServer &
   - python -m coverage run test.py
