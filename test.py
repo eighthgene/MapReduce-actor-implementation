@@ -73,16 +73,18 @@ class BasicTest(unittest.TestCase):
         # with open('./Files/result_distributed.txt', 'r') as dist:
         #     dict_distr = eval(dist.read())
 
-        dict_distr = eval(open('./Files/result_distributed.txt').read())
+        dict_distributed = eval(open('./Files/result_distributed.txt').read())
         dict_seq = eval(open('./Files/result_seq.txt').read())
 
         # with open('./Files/result_distributed.txt', 'r') as seq:
         #     dict_seq = eval(seq.read())
-        assert dict_distr == dict_seq
+        assert dict_distributed == dict_seq
 
     def test_url_server(self):
-        self.mapper.start_map(self.url_file, self.reducer, self.timer)
-        print 'hello'
+        data = eval(open('./Files/pg2000.txt').read())
+        result = self.mapper.map(data)
+        dict_distributed = eval(open('./Files/result_distributed.txt').read())
+        assert result == dict_distributed
 
 
 if __name__ == '__main__':
