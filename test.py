@@ -62,7 +62,7 @@ class BasicTest(unittest.TestCase):
         self.registry.unbind('Timer')
         self.assertEqual(self.registry.lookup('mapper'), None)
         self.assertListEqual(self.registry.get_all(), [])
-        self.assertEqual(self.registry.actors.keys(), [])
+        self.assertListEqual(self.registry.get_all_names(), [])
 
     def test_timer(self):
         self.out.clear()
