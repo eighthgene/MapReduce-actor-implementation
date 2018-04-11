@@ -91,7 +91,7 @@ class BasicTest(unittest.TestCase):
     #     self.assertEqual(len(result), len(dict_distributed))
     def test_map(self):
         data = open('./Files/Sample.txt', 'r')
-        result = self.mapper.map(data)
+        result = self.mapper.map(data.readlines())
         self.reducer.obtain_map_results(result)
 
 
