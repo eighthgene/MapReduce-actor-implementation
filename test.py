@@ -80,6 +80,9 @@ class BasicTest(unittest.TestCase):
         #     dict_seq = eval(seq.read())
         assert dict_distr == dict_seq
 
+    def test_url_server(self):
+        print self.url_file
+
 
 if __name__ == '__main__':
     print ('## Run the tests.')
