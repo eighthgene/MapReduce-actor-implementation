@@ -33,7 +33,7 @@ class WordCount(object):
     def showInfo(self):
         self.dict = sorted(self.dict.items(), key=lambda x: x[1], reverse=True)
         # d_view = [(v, k) for k, v in self.dict.iteritems()]
-        with open('OutputFile/result_seq.txt', 'w') as f:
+        with open('result_seq.txt', 'w') as f:
             print >> f, 'Filename:', self.dict
 
     def checkWord(self, word):
