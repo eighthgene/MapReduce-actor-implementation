@@ -11,6 +11,7 @@ from pyactor.context import set_context, create_host, sleep, shutdown
 from Timer import Timer
 from MapReduce import Mapper, Reducer
 from Registry import Registry
+from WordCount import MapImpl
 
 
 class Outs(object):
@@ -49,11 +50,6 @@ class BasicTest(unittest.TestCase):
         self.out.clear()
         sys.stdout = self.stdo
 
-    def test_map(self):
-        # This is the test. You can put as much of them as you want. The name
-        # must begin with 'test'.
-        self.mapper.start_map(self.url_file, self.reducer, self.timer)
-
     def test_unbind(self):
         self.assertEqual(self.registry.lookup('Timer'), self.timer)
         self.registry.unbind('Reducer')
@@ -69,23 +65,13 @@ class BasicTest(unittest.TestCase):
         self.timer.final_time = time.clock() - self.timer.initial_time
         self.assertIsNot(self.timer.final_time, 0)
 
-    def test_equal_list(self):
-        # with open('./Files/result_distributed.txt', 'r') as dist:
-        #     dict_distr = eval(dist.read())
-
+    def test_map(self):
+        data = open('./Files/pg2000.txt', 'r')
+        mapper = MapImpl()
+        result = mapper.map(data)
         dict_distributed = eval(open('./Files/result_distributed.txt').read())
-        dict_seq = eval(open('./Files/result_seq.txt').read())
-
-        # with open('./Files/result_distributed.txt', 'r') as seq:
-        #     dict_seq = eval(seq.read())
-        assert dict_distributed == dict_seq
-
-    def test_url_server(self):
-        with open('./Files/pg2000.txt', 'r') as f:
-            data = f.read().replace('\n', '')
-        result = self.mapper.map(data)
-        dict_distributed = eval(open('./Files/result_distributed.txt').read())
-        assert result == dict_distributed
+        result = sorted(result.items(), key=lambda x: x[1], reverse=True)
+        self.assertEqual(len(result), len(dict_distributed))
 
 
 if __name__ == '__main__':
