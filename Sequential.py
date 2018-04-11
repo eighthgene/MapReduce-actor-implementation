@@ -1,6 +1,6 @@
-import sys, time
-
 import re
+import sys
+import time
 
 
 class CountingWords(object):
