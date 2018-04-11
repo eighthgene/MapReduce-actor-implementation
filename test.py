@@ -89,6 +89,10 @@ class BasicTest(unittest.TestCase):
     #     dict_distributed = eval(open('./Files/result_distributed.txt').read())
     #     result = sorted(result.items(), key=lambda x: x[1], reverse=True)
     #     self.assertEqual(len(result), len(dict_distributed))
+    def test_map(self):
+        data = open('./Files/Sample.txt', 'r')
+        result = self.mapper.map(data)
+        self.reducer.obtain_map_results(result)
 
 
 if __name__ == '__main__':
