@@ -11,6 +11,9 @@ install:
 ignore:
   - /Files/*
   - Master.py
+  - FileHandler.py
+  - Wordcount.py
+  - CountingWords.py
 
 script:
   - python -m SimpleHTTPServer &
