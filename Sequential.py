@@ -8,14 +8,12 @@ class CountingWords(object):
     def __init__(self):
         self.nWords = 0
 
-    def addWord(self):
+    def count(self, word):
         self.nWords += 1
 
-    def checkWord(self, word):
-        return all(64 < ord(character) < 128 for character in word)
-
-    def getNumWords(self):
-        return self.nWords
+    def write_result(self):
+        with open('Files/result_seq.txt', 'w') as f:
+            print >> f, self.nWords
 
 
 class WordCount(object):
@@ -23,30 +21,25 @@ class WordCount(object):
     def __init__(self):
         self.dict = {}
 
-    def put(self, word):
+    def count(self, word):
         word = word.lower()
         if word in self.dict:
             self.dict[word] += 1
         else:
             self.dict[word] = 1
 
-    def showInfo(self):
+    def write_result(self):
         self.dict = sorted(self.dict.items(), key=lambda x: x[1], reverse=True)
-        # d_view = [(v, k) for k, v in self.dict.iteritems()]
-        with open('result_seq.txt', 'w') as f:
+        with open('Files/result_seq.txt', 'w') as f:
             print >> f, self.dict
-
-    def checkWord(self, word):
-        return all(64 < ord(character) < 128 for character in word)
-
-    def getNumWords(self):
-        return self.dict.values()
 
 
 def main():
     start_time = time.time()
-    wc = WordCount()
-    # cw = CountingWords()
+    if sys.argv[2] == "1":
+        count = WordCount()
+    else:
+        count = CountingWords()
     try:
         f = open(sys.argv[1], 'r')
     except IOError:
@@ -55,11 +48,8 @@ def main():
         for word in line.split():
             word = re.sub("[^a-zA-Z]+", "", word)
             if word != '':
-                # cw.addWord()
-                wc.put(word)
-    wc.showInfo()
-    # print "The total number of words in this text file is:", cw.getNumWords()
-    # print cw.getNumWords()
+                count.count(word)
+    count.write_result()
     print "Execution time:  %s seconds ---" % (time.time() - start_time)
 
 
