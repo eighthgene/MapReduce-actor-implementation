@@ -8,12 +8,7 @@ install:
   - pip install pyactor
   - pip install coverage
 
-ignore:
-  - /Files/*
-  - Master.py
-  - FileHandler.py
-  - Wordcount.py
-  - CountingWords.py
+
 
 script:
   - python -m SimpleHTTPServer &
