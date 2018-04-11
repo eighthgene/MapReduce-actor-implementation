@@ -66,9 +66,6 @@ class BasicTest(unittest.TestCase):
 
     def test_timer(self):
         self.out.clear()
-        self.assertEqual(self.timer.initial_time, None)
-        self.assertEqual(self.timer.final_time, None)
-
         self.timer.initial_time = time.clock()
         sleep(1)
         self.timer.final_time = time.clock() - self.timer.initial_time
