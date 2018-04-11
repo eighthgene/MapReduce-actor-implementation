@@ -34,7 +34,7 @@ class WordCount(object):
         self.dict = sorted(self.dict.items(), key=lambda x: x[1], reverse=True)
         # d_view = [(v, k) for k, v in self.dict.iteritems()]
         with open('result_seq.txt', 'w') as f:
-            print >> f, 'Filename:', self.dict
+            print >> f, self.dict
 
     def checkWord(self, word):
         return all(64 < ord(character) < 128 for character in word)
