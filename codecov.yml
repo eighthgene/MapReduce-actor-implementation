@@ -2,5 +2,5 @@ ignore:
   - /Files/*
   - Master.py
   - FileHandler.py
-  - Wordcount.py
+  - WordCount.py
   - CountingWords.py

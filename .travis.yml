@@ -8,8 +8,6 @@ install:
   - pip install pyactor
   - pip install coverage
 
-
-
 script:
   - python -m SimpleHTTPServer &
   - python -m coverage run test.py
