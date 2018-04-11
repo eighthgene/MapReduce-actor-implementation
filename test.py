@@ -81,7 +81,7 @@ class BasicTest(unittest.TestCase):
         assert dict_distr == dict_seq
 
     def test_url_server(self):
-        print self.url_file
+        self.mapper.start_map(self.url_file, self.reducer, self.timer)
 
 
 if __name__ == '__main__':
