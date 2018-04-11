@@ -81,7 +81,7 @@ class BasicTest(unittest.TestCase):
         assert dict_distributed == dict_seq
 
     def test_url_server(self):
-        with open('pg2000.txt', 'r') as f:
+        with open('./Files/pg2000.txt', 'r') as f:
             data = f.read().replace('\n', '')
         result = self.mapper.map(data)
         dict_distributed = eval(open('./Files/result_distributed.txt').read())
