@@ -82,6 +82,7 @@ class BasicTest(unittest.TestCase):
 
     def test_url_server(self):
         self.mapper.start_map(self.url_file, self.reducer, self.timer)
+        print 'hello'
 
 
 if __name__ == '__main__':
