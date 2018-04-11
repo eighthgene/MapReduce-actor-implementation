@@ -28,7 +28,8 @@ class FileHandler(object):
         file_split.write(str(index) + "\n")
         return file_split
 
-    def is_on_split_position(self, character, index, split_size, current_split):
+    @classmethod
+    def is_on_split_position(cls, character, index, split_size, current_split):
         """Check if it is the right time to split.
         i.e: character is a space and the limit has been reached.
         :param character: the character we are currently on.

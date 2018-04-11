@@ -6,10 +6,10 @@ from MapReduce import Mapper, Reducer
 
 
 class MapCountingWords(Mapper):
-    def map(self):
+    def map(self, data):
         counter = 0
         results = {}
-        for line in self.data:
+        for line in data:
             line_words = line.split()
             for word in line_words:
                 word = re.sub("[^a-zA-Z]+", "", word)
@@ -42,6 +42,6 @@ if __name__ == '__main__':
     # Name output file (.txt)
     mapReduce = WordCount('192.168.0.22',
                           '192.168.0.22:8000',
-                          'Z:/1/s.txt', 'Z:/1/', 'res.txt',
+                          'Z:/1/pg2000.txt', 'Z:/1/', 'res.txt',
                           'CountingWords/MapCountingWords', 'CountingWords/ReduceCountingsWords')
     mapReduce.run()

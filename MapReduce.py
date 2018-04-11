@@ -77,8 +77,8 @@ class Reducer(object):
             print >> f, 'Output of MapReduce:', sorted(result.items(), key=lambda x: x[1], reverse=True)
 
     def reduce(self, data):
-        results = {}
+        # results = {}
         # for res in data.items():
         #     results[res[0]] = sum(res[1])
         # return results
-        return results
+        return self.result_dict
