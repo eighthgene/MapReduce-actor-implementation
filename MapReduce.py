@@ -68,12 +68,7 @@ class Reducer(object):
         self.timer = timer_actor
 
     def save_to_file(self, result):
-        # d_view = [(v, k) for k, v in result.iteritems()]
-        # d_view.sort(reverse=True)  # natively sort by first element
-        # with open(self.file_path + self.output_filename, 'w') as f:
-        #     print >> f, 'Filename:', [["%s: %d" % (k, v)] for v, k in d_view]
-
-        with open(self.file_path + self.output_filename, 'w') as f:
+        with open(self.file_path + '/' + self.output_filename, 'w') as f:
             print >> f, 'Output of MapReduce:', sorted(result.items(), key=lambda x: x[1], reverse=True)
 
     def reduce(self, data):

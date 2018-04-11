@@ -46,7 +46,7 @@ if __name__ == '__main__':
     # Name output file (.txt)
     mapReduce = WordCount('10.110.173.201',
                           '10.110.173.201:8000',
-                          'Z:/1/pg2000.txt', 'Z:/1/', 'res.txt',
+                          './Files/pg2000.txt', './Files', 'result_distributed.txt',
                           'WordCount/MapImpl', 'WordCount/ReduceImpl')
     mapReduce.run()
 

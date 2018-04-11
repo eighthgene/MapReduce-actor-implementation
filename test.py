@@ -70,7 +70,7 @@ class BasicTest(unittest.TestCase):
         self.assertIsNot(self.timer.final_time, 0)
 
     def test_equal_list(self):
-        file_object = open('/file', 'r')
+        file_object = open('/file/', 'r')
 
 if __name__ == '__main__':
     print ('## Run the tests.')
