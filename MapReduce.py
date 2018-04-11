@@ -3,7 +3,7 @@ import urllib2
 
 class Mapper(object):
     _ask = []
-    _tell = ['start_map', 'map']
+    _tell = ['start_map']
     _ref = ['start_map']
 
     reducer = None
