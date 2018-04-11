@@ -1,1 +1,1 @@
-Output of MapReduce: [('the', 79403), ('of', 39996)]
+[('the', 79403), ('of', 39996)]
