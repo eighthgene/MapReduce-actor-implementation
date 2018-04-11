@@ -138,7 +138,7 @@ Example:
 ```python
 mapReduce = WordCount('192.168.0.22',
                           '192.168.0.22:8000',
-                          'Z:/Folder/Text.txt', 'Z:/Folder/', 'output.txt',
+                          './Files/pg2000.txt', './Files', 'result_distributed.txt',
                           'WordCount/MapImpl', 'WordCount/ReduceImpl')
 ```
 
