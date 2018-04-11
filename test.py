@@ -70,9 +70,13 @@ class BasicTest(unittest.TestCase):
         self.assertIsNot(self.timer.final_time, 0)
 
     def test_equal_list(self):
-        file_distr = open('./Files/result_distributed.txt', 'r')
-        file_seq = open('./Files/result_seq.txt', 'r')
-        assert file_distr == file_seq
+        with open('./Files/result_distributed.txt', 'r') as dist:
+            dict_distr = eval(dist.read())
+
+        with open('./Files/result_distributed.txt', 'r') as seq:
+            dict_seq = eval(seq.read())
+        assert dict_distr == dict_seq
+
 
 if __name__ == '__main__':
     print ('## Run the tests.')
