@@ -4,6 +4,7 @@ This is a simplified model of distributed computing presented by Google, used fo
 
 [![Build Status](https://travis-ci.org/eighthgene/MapReduce-actor-implementation.svg?branch=master)](https://travis-ci.org/eighthgene/MapReduce-actor-implementation)
 [![codecov](https://codecov.io/gh/eighthgene/MapReduce-actor-implementation/branch/master/graph/badge.svg)](https://codecov.io/gh/eighthgene/MapReduce-actor-implementation)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/70cdb7335c0247a8b07a1bfdad2d4d12)](https://www.codacy.com/app/eighthgene/MapReduce-actor-implementation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=eighthgene/MapReduce-actor-implementation&amp;utm_campaign=Badge_Grade)
 
 ## Project architecture
 This is a simplified implementation of MapRedus. Model consists of: N-number of workers nodes, 1 reducer and Master (main). It is a framework for computing some sets of distributed tasks using a large number of computers that form a cluster. 
