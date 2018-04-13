@@ -6,7 +6,9 @@ from MapReduce import Mapper, Reducer
 
 
 class MapCountingWords(Mapper):
-    def map(self, data):
+
+    @classmethod
+    def map(cls, data):
         counter = 0
         results = {}
         for line in data:
@@ -21,7 +23,8 @@ class MapCountingWords(Mapper):
 
 class ReduceCountingsWords(Reducer):
 
-    def reduce(self, list_of_dict):
+    @classmethod
+    def reduce(cls, list_of_dict):
         reduced_dict = {}
         for dictionary in list_of_dict:
             tmp_dict = dict(dictionary)
@@ -40,8 +43,8 @@ if __name__ == '__main__':
     # Input file path
     # Output path
     # Name output file (.txt)
-    mapReduce = WordCount('10.110.173.201',
-                          '10.110.173.201:8000',
+    mapReduce = WordCount('10.110.173.52',
+                          '10.110.173.52:8000',
                           './Files/Sample.txt', './Files', 'result_distributed.txt',
                           'CountingWords/MapCountingWords', 'CountingWords/ReduceCountingsWords')
     mapReduce.run()

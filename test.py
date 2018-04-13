@@ -1,7 +1,7 @@
 '''
 Example project test unit.
 '''
-
+import ast
 import unittest
 import sys
 
@@ -11,7 +11,6 @@ from pyactor.context import set_context, create_host, sleep, shutdown
 from Timer import Timer
 from MapReduce import Mapper, Reducer
 from Registry import Registry
-from WordCount import MapImpl
 
 
 class Outs(object):
@@ -71,16 +70,18 @@ class BasicTest(unittest.TestCase):
         self.timer.final_time = time.clock() - self.timer.initial_time
         self.assertIsNot(self.timer.final_time, 0)
 
-    def test_equal_list(self):
+    @staticmethod
+    def test_equal_list():
         # with open('./Files/result_distributed.txt', 'r') as dist:
         #     dict_distr = eval(dist.read())
 
-        dict_distr = eval(open('./Files/result_distributed.txt').read())
-        dict_seq = eval(open('./Files/result_seq.txt').read())
+        dict_distr = ast.literal_eval(open('./Files/result_distributed.txt').read())
+        dict_seq = ast.literal_eval(open('./Files/result_seq.txt').read())
 
         # with open('./Files/result_distributed.txt', 'r') as seq:
         #     dict_seq = eval(seq.read())
-        assert dict_distr == dict_seq
+        if not dict_distr == dict_seq:
+            raise AssertionError()
 
     # def test_map(self):
     #     data = open('./Files/pg2000.txt', 'r')
@@ -89,7 +90,7 @@ class BasicTest(unittest.TestCase):
     #     dict_distributed = eval(open('./Files/result_distributed.txt').read())
     #     result = sorted(result.items(), key=lambda x: x[1], reverse=True)
     #     self.assertEqual(len(result), len(dict_distributed))
-    def test_map(self):
+    def test_obtain_results(self):
         data = open('./Files/Sample.txt', 'r')
         self.reducer.obtain_map_results(data.readlines())
 
