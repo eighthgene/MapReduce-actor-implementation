@@ -69,7 +69,7 @@ class Reducer(object):
 
     def save_to_file(self, result):
         with open(self.file_path + '/' + self.output_filename, 'w') as f:
-            print >> f, sorted(result.items(), key=lambda x: x[1], reverse=True)
+            print >> f, sorted(result.items(), key=lambda x: x[0], reverse=False)
 
     def reduce(self, data):
         # results = {}

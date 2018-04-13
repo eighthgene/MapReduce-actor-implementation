@@ -29,7 +29,7 @@ class WordCount(object):
             self.dict[word] = 1
 
     def write_result(self):
-        self.dict = sorted(self.dict.items(), key=lambda x: x[1], reverse=True)
+        self.dict = sorted(self.dict.items(), key=lambda x: x[0], reverse=False)
         with open('Files/result_seq.txt', 'w') as f:
             print >> f, self.dict
 
