@@ -52,6 +52,7 @@ tutorial.
 
 ## How to run
 To run the system, follow these steps:
+
 **Step 1:** Start the Registry
     
     python Registry.py [IP] [PORT]
