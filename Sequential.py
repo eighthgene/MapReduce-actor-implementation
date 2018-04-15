@@ -6,12 +6,22 @@ import time
 class CountingWords(object):
 
     def __init__(self):
+        """
+        constructor counting words
+        """
         self.nWords = 0
 
     def count(self, word):
+        """
+        increment word by 1
+        :param word: word to increment
+        """
         self.nWords += 1
 
     def write_result(self):
+        """
+        save results to file
+        """
         with open('Files/result_seq.txt', 'w') as f:
             print >> f, self.nWords
 
@@ -19,9 +29,16 @@ class CountingWords(object):
 class WordCount(object):
 
     def __init__(self):
+        """
+        constructor word count
+        """
         self.dict = {}
 
     def count(self, word):
+        """
+        add word in list by value 1 o increment value if word is in list
+        :param word:
+        """
         word = word.lower()
         if word in self.dict:
             self.dict[word] += 1
@@ -29,6 +46,9 @@ class WordCount(object):
             self.dict[word] = 1
 
     def write_result(self):
+        """
+        save results to file
+        """
         self.dict = sorted(self.dict.items(), key=lambda x: x[0], reverse=False)
         with open('Files/result_seq.txt', 'w') as f:
             print >> f, self.dict

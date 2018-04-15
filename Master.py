@@ -7,6 +7,16 @@ class Master(object):
     def __init__(self, ip, url_server,
                  input_file_path, output_dir, output_filename,
                  map_implementation, reduce_implementation):
+        """
+        Constructor of mapper
+        :param ip: host IP
+        :param url_server: URL HTTP Server
+        :param input_file_path: input file path
+        :param output_dir: output path
+        :param output_filename: name output file (.txt)
+        :param map_implementation: your file and class of map implementation, connected by slash.
+        :param reduce_implementation: your file and class of reduce implementation, connected by slash.
+        """
         # Ip
         self.ip = ip
         self.url_server = url_server
@@ -21,6 +31,9 @@ class Master(object):
         self.reduce_impl = reduce_implementation
 
     def run(self):
+        """
+        Method tu run MapReduce implementation
+        """
         url_file = 'http://' + self.url_server + '/'
         ip = self.ip
 

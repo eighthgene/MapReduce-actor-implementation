@@ -13,13 +13,25 @@ class Registry(object):
     _ref = ['bind', 'lookup']
 
     def __init__(self):
+        """
+        Constructor of Registry
+        """
         self.actors = {}
 
     def bind(self, name, actor):
+        """
+        register worker in server
+        :param name: user name
+        :param actor: actor reference
+        """
         print name, "<- registered in server"
         self.actors[name] = actor
 
     def unbind(self, name):
+        """
+        unregister worker in server
+        :param name: user name
+        """
         if name in self.actors.keys():
             del self.actors[name]
             print name, "<- unregistered from server"
@@ -27,15 +39,28 @@ class Registry(object):
             raise NotFound()
 
     def lookup(self, name):
+        """
+        look up actor in server ny name
+        :param name: user name
+        :return: actor reference
+        """
         if name in self.actors:
             return self.actors[name]
         else:
             return None
 
     def get_all(self):
+        """
+        get all actors
+        :return: list of actors references registered in server
+        """
         return self.actors.values()
 
     def get_all_names(self):
+        """
+        get all actors names
+        :return: list of actors names registered in server
+        """
         return self.actors.keys()
 
 
