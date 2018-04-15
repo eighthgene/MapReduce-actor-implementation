@@ -62,13 +62,22 @@ class FileHandler(object):
             index += 1
         current_split_unit.close()
 
-    # return the name of the current split file corresponding to the given index
     def get_input_split_file(self, index, input_dir=None, extension=".txt"):
+        """
+        Return the name of the current split file corresponding to the given index
+        :param index:  index of chank
+        :param input_dir: directory of chank
+        :param extension: extension
+        :return: path of split file
+        """
         if not (input_dir is None):
             return input_dir + "/file_" + str(index) + extension
         return self.default_input_dir + "/file_" + str(index) + extension
 
     def clear(self):
+        """
+        Method for delete all temporary files, chunks of file.
+        """
         for i in range(self.number_of_splits):
             os.unlink(self.output_dir + "/file_" + str(i) + ".txt")
         print 'Cleaning temp files...'

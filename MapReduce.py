@@ -12,18 +12,20 @@ class Mapper(object):
     timer = None
 
     def map(self, data):
-        # results = []
-        # for line in self.data:
-        #     line_words = line.split()
-        #     for word in line_words:
-        #         word = re.sub("[^a-zA-Z]+", "", word)
-        #         if word != '':
-        #             # lowercase words
-        #             results.append((word.lower(), 1))
-        # return results
+        """
+        Definition of map method
+        :param data: String data chank of text
+        :return: dictionary: key, value.
+        """
         pass
 
     def start_map(self, url_file_chank, ref_reducer, timer_actor):
+        """
+        Call this method from the main to to initialization and start map function
+        :param url_file_chank: URL of chunks file
+        :param ref_reducer: Reference to reducer actor
+        :param timer_actor: Reference to timer actor
+        """
         self.data = urllib2.urlopen(url_file_chank)
         self.timer = timer_actor
         self.timer.start_timer()
@@ -46,13 +48,19 @@ class Reducer(object):
     result_dict = []
 
     def obtain_map_results(self, map_results):
+        """
+        Method for obtain partial result from one mapper and start timer if is the first call of function
+        :param map_results: dictionary, result of mapper
+        """
         self.num_mappers_finished += 1
         self.result_dict.append(map_results)
-        # map(lambda w: self.result_dict[w[0]].append(w[1]), map_results)
         if self.num_mappers_finished >= self.num_mappers:
             self.start_reducer()
 
     def start_reducer(self):
+        """
+        Method for start reducing all results of mappers saved in result_dict
+        """
         reduce_result = self.reduce(self.result_dict)
         self.timer.stop_timer()
         if reduce_result is not None:
@@ -61,6 +69,14 @@ class Reducer(object):
         print 5 * '#' + ' Reducer finished ' + 5 * '#'
 
     def set_parameters(self, num_maps, file_handler, file_path, output_filename, timer_actor):
+        """
+        Setter of reducer
+        :param num_maps: number of mapper in system
+        :param file_handler: object of FileHandler
+        :param file_path: path of file
+        :param output_filename: name of file for save results
+        :param timer_actor: timer actor
+        """
         self.num_mappers = num_maps
         self.file_handler = file_handler
         self.file_path = file_path
@@ -68,12 +84,17 @@ class Reducer(object):
         self.timer = timer_actor
 
     def save_to_file(self, result):
+        """
+        Save results of reducer in file, sorted by key alphabetically
+        :param result: save dictionary to file
+        """
         with open(self.file_path + '/' + self.output_filename, 'w') as f:
             print >> f, sorted(result.items(), key=lambda x: x[0], reverse=False)
 
     def reduce(self, data):
-        # results = {}
-        # for res in data.items():
-        #     results[res[0]] = sum(res[1])
-        # return results
+        """
+        Definition of reduce method
+        :param data: list of dictionaries to reduce
+        :return: dictionary of data reduced
+        """
         return self.result_dict
