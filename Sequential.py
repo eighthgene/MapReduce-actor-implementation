@@ -22,7 +22,7 @@ class CountingWords(object):
         """
         save results to file
         """
-        with open('Files/result_seq.txt', 'w') as f:
+        with open('Files/result_sample_seq.txt', 'w') as f:
             print >> f, self.nWords
 
 
@@ -50,7 +50,7 @@ class WordCount(object):
         save results to file
         """
         self.dict = sorted(self.dict.items(), key=lambda x: x[0], reverse=False)
-        with open('Files/result_seq.txt', 'w') as f:
+        with open('Files/result_sample_seq.txt', 'w') as f:
             print >> f, self.dict
 
 
