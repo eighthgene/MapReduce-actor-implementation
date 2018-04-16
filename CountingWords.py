@@ -55,6 +55,6 @@ if __name__ == '__main__':
     # Name output file (.txt)
     mapReduce = WordCount('10.110.173.35',
                           '10.110.173.35:8000',
-                          './Files/Sample.txt', './Files', 'result_sample_distributed.txt',
+                          './Files/Sample.txt', './Files', 'result_distributed.txt',
                           'CountingWords/MapCountingWords', 'CountingWords/ReduceCountingWords')
     mapReduce.run()
