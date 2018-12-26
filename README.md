@@ -2,6 +2,7 @@
 
 This is a simplified model of distributed computing presented by Google, used for parallel computations over very large data sets in computer clusters. This project is simplified [MapReduce](https://en.wikipedia.org/wiki/MapReduce) using implementation of [PyActor](https://github.com/pedrotgn/pyactor) library.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/41e0f07473f447c987f325cfd2daf696)](https://app.codacy.com/app/eighthgene/MapReduce-actor-implementation?utm_source=github.com&utm_medium=referral&utm_content=eighthgene/MapReduce-actor-implementation&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/eighthgene/MapReduce-actor-implementation.svg?branch=master)](https://travis-ci.org/eighthgene/MapReduce-actor-implementation)
 [![codecov](https://codecov.io/gh/eighthgene/MapReduce-actor-implementation/branch/master/graph/badge.svg)](https://codecov.io/gh/eighthgene/MapReduce-actor-implementation)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/70cdb7335c0247a8b07a1bfdad2d4d12)](https://www.codacy.com/app/eighthgene/MapReduce-actor-implementation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=eighthgene/MapReduce-actor-implementation&amp;utm_campaign=Badge_Grade)
